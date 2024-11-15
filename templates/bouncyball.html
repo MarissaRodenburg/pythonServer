@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Ball</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bouncingBallCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('bouncingBallCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas dimensions
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Ball properties
+        let x = canvas.width / 2;
+        let y = canvas.height / 2;
+        let dx = 3; // Horizontal velocity
+        let dy = 2; // Vertical velocity
+        const radius = 20;
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'blue';
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+            drawBall();
+
+            // Update position
+            x += dx;
+            y += dy;
+
+            // Bounce off walls
+            if (x + radius > canvas.width || x - radius < 0) {
+                dx = -dx;
+            }
+            if (y + radius > canvas.height || y - radius < 0) {
+                dy = -dy;
+            }
+
+            requestAnimationFrame(update); // Call update recursively
+        }
+
+        update(); // Start the animation loop
+    </script>
+</body>
+</html>

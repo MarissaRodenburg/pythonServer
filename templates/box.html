@@ -1,0 +1,30 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        const box = document.getElementById('box');
+        box.animate([
+            { transform: 'translateX(0px)' },
+            { transform: 'translateX(300px)' }
+        ], {
+            duration: 2000,
+            iterations: Infinity
+        });
+    </script>
+</body>
+</html>
