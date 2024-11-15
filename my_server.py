@@ -29,8 +29,3 @@ def not_found(e):
 
 if __name__ == '__main__': 
     app.run(port=8000, debug=True)
-
-# Here are the git instructions to create a repository
-# git init
-# git add .
-# git commit -m "First commit"
