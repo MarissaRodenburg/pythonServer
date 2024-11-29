@@ -10,8 +10,7 @@
 # Details on how to set this up: https://medium.com/data-science-at-microsoft/how-to-access-an-api-for-first-time-api-users-879002f5f58d
 
 
-from flask import Flask, render_template, render_template_string, url_for 
-from flask import Flask, request, redirect, session, jsonify
+from flask import Flask, render_template, render_template_string, url_for, request, redirect, session
 from requests_oauthlib import OAuth1Session
 import os
 import json
@@ -108,7 +107,7 @@ def callback():
         
         # Store access token in session for use in /stash route
 
-        print(access_token_response)
+        #print(access_token_response)
         session['access_token'] = access_token_response.get('oauth_token')
         session['access_token_secret'] = access_token_response.get('oauth_token_secret')
         session['username'] = request.args.get('username')
@@ -139,10 +138,10 @@ def stash():
 
     # Fetch user's stash
     stash_url = f"https://api.ravelry.com/people/{username}/stash/list.json"
-    print(f"stash_url: {stash_url}")    
+    #print(f"stash_url: {stash_url}")    
     try:
         response = ravelry.get(stash_url)
-        print(f"Response Status Code: {response.status_code}")  
+        #print(f"Response Status Code: {response.status_code}")  
         if response.status_code == 200:
             try:
                 # Parse JSON response
@@ -150,7 +149,7 @@ def stash():
                 #print(f"Response Content: {response.content}")
                 #print(response.headers)
                 stash_data = response.json()
-                print(stash_data)
+                #print(stash_data)
                 # Create HTML table
                 stash_items = stash_data['stash']
                 # Create an HTML table
