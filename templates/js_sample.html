@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Example</title>
+</head>
+<body>
+    <h1>Hello, JavaScript with Python Server!</h1>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('JavaScript is running!');
+            alert('Hello from JavaScript!');
+        });
+    </script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
